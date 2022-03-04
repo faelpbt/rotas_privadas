@@ -16,12 +16,14 @@ export const AuthContext = createContext<IAuthContextState>({} as IAuthContextSt
 export const AuthProvider: React.FC = ({children}) => {
 
   const signIn = useCallback( async ({ username, password }: IUserData) => {
-    const response = await api().post('/users', {
+    const response = await api().post('/sessions', {
       username,
       password
     });
 
-    console.log(response.data);
+    const { token } = response.data;
+
+    localStorage.setItem('@PermissionYT:token', token)
   }, []);
 
   return (
