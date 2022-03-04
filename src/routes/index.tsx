@@ -1,16 +1,19 @@
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import {AuthContext} from '../contexts/auth';
+import { AppRoutes } from './app.routes';
+import { AppAuth } from './auth.routes';
 
-import { Home, Login, User } from '../pages';
+export const AuthRoutes: React.FC = () => {
+  const {signed} = useContext(AuthContext);
 
-export const AppRoutes = () => {
   return(
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/user' element={<User />} />
-        <Route path='*' element={<Navigate to='/' />} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        {
+          signed
+            ? <AppRoutes />
+            : <AppAuth />
+        }
+      </BrowserRouter>
   );
 }

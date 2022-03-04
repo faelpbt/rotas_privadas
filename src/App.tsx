@@ -1,14 +1,14 @@
-import './assets/css/App.css'
-import { AuthProvider } from './contexts'
-import { AppRoutes } from './routes'
+import React from 'react';
+import { AuthRoutes } from './routes';
+import {AuthProvider} from './contexts/auth';
 
-export const App = () => {
+export const App: React.FC = () => {
   return (
     <div>
       <AuthProvider>
-        <AppRoutes />
+        <AuthRoutes />
       </AuthProvider>
     </div>
-  )
+  );
 }
 

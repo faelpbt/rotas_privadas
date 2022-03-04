@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "user": "",
+      "email": "",
+      "id": ""
+    }
+  ],
+  "sessions": [
+    {
+      "tocken": "token-fake"
+    }
+  ]
+}
