@@ -5,7 +5,7 @@ import { Home } from '../pages';
 export const AppAuth: React.FC = () => {
   return(
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/*" element={() => <Navigate to="/" />} />
     </Routes>
   );

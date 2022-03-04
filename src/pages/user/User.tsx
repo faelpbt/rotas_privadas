@@ -1,12 +1,9 @@
-import React, { useContext } from 'react'
-import {AuthContext} from '../../contexts/auth'
+import React from 'react'
 
 
 export const User: React.FC = () => {
-  const { signIn } = useContext(AuthContext);
-
   const handleSignIn = () => {
-    signIn();
+
   }
 
   return (

@@ -2,8 +2,8 @@ import { Api } from '../API';
 import { ApiException } from '../ErrorExeption';
 
 export interface IUserData {
-  Email: string;
-  Senha: string;
+  email: string;
+  senha: string;
 }
 
 export const getUserInfo = async (): Promise<IUserData[] | ApiException> => {

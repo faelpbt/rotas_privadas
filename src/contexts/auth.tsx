@@ -1,31 +1,37 @@
 import React, { createContext, useState } from "react";
-import * as auth from '../services/Auth/auth'
-import { IUserData, UserLogado } from '../services/axios/user/UserInfo'
+
 
 interface IAuthContextData {
-  signed: boolean;
-  user: object | null;
-  signIn(): Promise<void>;
-  signOut(): void;
+  isLogged: boolean;
+  user: any;
+  login: ({email, senha}: IUserData) => void;
+  logout(): void;
+}
+
+interface IUserData {
+  email: string;
+  senha: string;
 }
 
 export const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
 
 export const AuthProvider: React.FC = ({children}) => {
-  const [user, setUser] = useState<IUserData[]>([]);
+  const [user, setUser] = useState<IUserData | null>(null);
 
-  async function signIn() {
-    const response = await UserLogado.getUserInfo();
-
-    setUser(response.user);
+  const login = ({email, senha}: IUserData) => {
+    console.log("login", {
+      email,
+      senha,
+    })
+    setUser({ email, senha })
   }
 
-  function signOut() {
-    setUser([]);
+  const logout = () => {
+
   }
 
   return(
-    <AuthContext.Provider value={{signed: !!user, user, signIn, signOut}}>
+    <AuthContext.Provider value={{isLogged: !!user, user, login, logout}}>
       {children}
     </AuthContext.Provider>
   );
