@@ -8,7 +8,7 @@ interface IAuthContextData {
   logout(): void;
 }
 
-interface IUserData {
+export interface IUserData {
   email: string;
   senha: string;
 }
